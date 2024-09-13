@@ -2,7 +2,7 @@ name: Get Feed
 
 on:
   schedule:
-    - cron: '00 06 * * *' # this follows UTC time - now set to 8:00 Amsterdam
+    - cron: '00 13 * * *' # this follows UTC time - now set to 8:00 Amsterdam
   workflow_dispatch:
 
 jobs:
@@ -12,12 +12,14 @@ jobs:
       NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
       NOTION_READER_DATABASE_ID: ${{ secrets.NOTION_READER_DATABASE_ID }}
       NOTION_FEEDS_DATABASE_ID: ${{ secrets.NOTION_FEEDS_DATABASE_ID }}
-      RUN_FREQUENCY: 3600 # in seconds - original value 86400 for every 24 hours 
+      RUN_FREQUENCY: 1800 # in seconds - original value 86400 for every 24 hours 
     steps:
       - name: Setup Node
-        uses: actions/setup-node@v4 # 
+        uses: actions/setup-node@v4 # original was 2
+        # https://github.blog/changelog/2024-02-13-deprecation-notice-v1-and-v2-of-the-artifact-actions/
+        # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow
         with:
-          node-version: 20 # original was 14
+          node-version: 20 # original was 14 (error message suggested first using 16, then 20)
 
       - name: Update Notion Feed
         run: |
