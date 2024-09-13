@@ -15,9 +15,9 @@ jobs:
       RUN_FREQUENCY: 3600 # in seconds - original value 86400 for every 24 hours 
     steps:
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4 # 
         with:
-          node-version: 14
+          node-version: 14 # original was 12
 
       - name: Update Notion Feed
         run: |
