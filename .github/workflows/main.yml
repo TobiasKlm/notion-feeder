@@ -2,7 +2,7 @@ name: Get Feed
 
 on:
   schedule:
-    - cron: '34 10 * * *' # this follows UTC time
+    - cron: '00 06 * * *' # this follows UTC time - now set to 8:00 Amsterdam
   workflow_dispatch:
 
 jobs:
